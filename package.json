@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "css-loader": "^2.1.0",
+    "dplayer": "^1.25.0",
     "element-ui": "^2.6.3",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
