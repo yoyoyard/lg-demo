@@ -12,6 +12,11 @@ const router = new Router({
       name: "home",
       component: () => import("./pages/home/index.vue")
     },
+    {
+      path: "/detail",
+      name: "detail",
+      component: () => import("./pages/home/detail.vue")
+    },
   ]
 })
 
