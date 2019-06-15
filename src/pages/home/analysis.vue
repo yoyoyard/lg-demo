@@ -38,9 +38,7 @@
       </el-table>
     </el-col>
     <el-col :span="6">
-      <div>
-        <canvas ref="canvas" width="381" height="172"/>
-      </div>
+      <canvas ref="canvas"/>
     </el-col>
   </el-row>
 </template>
@@ -48,7 +46,6 @@
 export default {
   data() {
     return {
-      imgSrc: "",
       index: 0,
       tableData: [
         {
@@ -127,19 +124,19 @@ export default {
         this.$refs.playerInfo.src = this.device[index].url;
         this.$refs.playerInfo.currentTime = 0;
         this.index = index;
+        setTimeout(() => {
+          this.getData();
+        }, 100);
       }
     },
     creatImg() {
-      const video = this.$refs.playerInfo
+      const video = this.$refs.playerInfo;
       const mycanvas = this.$refs.canvas;
       mycanvas
         .getContext("2d")
-        .drawImage(video, 200, 200, 762, 344, 0, 0, 381, 172);
-    }
-  },
-  mounted() {
-    this.$refs.playerInfo.src = this.device[0].url;
-    setInterval(() => {
+        .drawImage(video, 100, 100, 762, 344, 0, 0, 381, 172);
+    },
+    getData() {
       this.creatImg();
       this.tableData.unshift({
         date: "2019-05-02",
@@ -149,7 +146,16 @@ export default {
         end: "12:00:00"
       });
       this.tableData.pop();
-    }, 3000);
+    }
+  },
+  mounted() {
+    this.$refs.playerInfo.src = this.device[0].url;
+    setTimeout(() => {
+      this.getData();
+    }, 100);
+    setInterval(() => {
+      this.getData();
+    }, 1000);
   }
 };
 </script>
@@ -157,11 +163,11 @@ export default {
 .list {
   height: 518px;
   border: 1px solid #ccc;
-  background: -webkit-linear-gradient(top, rgb(61, 43, 102), rgb(62, 62, 231));
-  background: -o-linear-gradient(top, rgb(61, 43, 102), rgb(62, 62, 231));
-  background: -moz-linear-gradient(top, rgb(61, 43, 102), rgb(62, 62, 231));
-  background: -mos-linear-gradient(top, rgb(61, 43, 102), rgb(62, 62, 231));
-  background: linear-gradient(top, rgb(61, 43, 102), rgb(62, 62, 231));
+  background: -webkit-linear-gradient(180deg, rgb(61, 43, 102), rgb(62, 62, 231));
+  background: -o-linear-gradient(180deg, rgb(61, 43, 102), rgb(62, 62, 231));
+  background: -moz-linear-gradient(180deg, rgb(61, 43, 102), rgb(62, 62, 231));
+  background: -mos-linear-gradient(180deg, rgb(61, 43, 102), rgb(62, 62, 231));
+  background: linear-gradient(180deg, rgb(61, 43, 102), rgb(62, 62, 231));
   ul {
     height: 100%;
     padding: 0;
@@ -178,6 +184,10 @@ export default {
       background-color: rgb(84, 106, 204);
     }
   }
+}
+canvas {
+  display: block;
+  width: 100%;
 }
 </style>
 

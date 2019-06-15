@@ -10,17 +10,32 @@ const router = new Router({
     {
       path: "/",
       name: "home",
-      component: () => import("./pages/home/index.vue")
+      component: () => import("./pages/home/home.vue"),
+      hidden:true
+    },
+    {
+      path: "/index",
+      name: "index",
+      component: () => import("./pages/home/index.vue"),
+      meta:{
+        title:'视频列表'
+      }
     },
     {
       path: "/detail",
       name: "detail",
-      component: () => import("./pages/home/detail.vue")
+      component: () => import("./pages/home/detail.vue"),
+      meta:{
+        title:'视频详情'
+      }
     },
     {
       path: "/analysis",
       name: "analysis",
-      component: () => import("./pages/home/analysis.vue")
+      component: () => import("./pages/home/analysis.vue"),
+      meta:{
+        title:'视频分析'
+      }
     },
   ]
 })
