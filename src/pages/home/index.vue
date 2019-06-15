@@ -4,7 +4,7 @@
       <el-col :span="15">
         <div class="wrapper" ref="wrapper">
           <div class="content" :style="{width:vsize+'px'}">
-            <customVideoPlayer v-for="(item,i) in videoSources" :msg="item"/>
+            <CustomVideoPlayer v-for="item in videoSources" :key="item" :msg="item"/>
           </div>
         </div>
       </el-col>
@@ -36,12 +36,12 @@
   </el-main>
 </template>
 <script>
-import customVideoPlayer from "@/components/customVideoPlayer";
+import CustomVideoPlayer from "@/components/customVideoPlayer";
 import videoDes from "@/components/videoDes";
 import Bscroll from "better-scroll";
 export default {
   components: {
-    customVideoPlayer,
+    CustomVideoPlayer,
     videoDes
   },
 
@@ -75,7 +75,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      let scroll = new Bscroll(this.$refs.wrapper, {
+       new Bscroll(this.$refs.wrapper, {
         scrollX: true,
         click: true
       });

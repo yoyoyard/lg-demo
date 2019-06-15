@@ -71,7 +71,7 @@ export default {
   data() {
     return {
       timer: "",
-      speed:1
+      speed: 1
     };
   },
   computed: {},
@@ -83,7 +83,8 @@ export default {
       } else if (this.$refs.swipe.offsetLeft > 0) {
         this.$refs.swipe.style.left = -this.$refs.swipe.offsetWidth / 2 + "px";
       }
-      this.$refs.swipe.style.left = this.$refs.swipe.offsetLeft - this.speed + "px";
+      this.$refs.swipe.style.left =
+        this.$refs.swipe.offsetLeft - this.speed + "px";
     },
     stop() {
       clearInterval(this.timer);
