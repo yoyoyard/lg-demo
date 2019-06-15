@@ -39,7 +39,7 @@
     </el-col>
     <el-col :span="6">
       <div>
-        <img src="../../assets/images/bg.jpg" height="172" alt>
+        <canvas ref="canvas" width="381" height="172"/>
       </div>
     </el-col>
   </el-row>
@@ -48,6 +48,7 @@
 export default {
   data() {
     return {
+      imgSrc: "",
       index: 0,
       tableData: [
         {
@@ -127,11 +128,19 @@ export default {
         this.$refs.playerInfo.currentTime = 0;
         this.index = index;
       }
+    },
+    creatImg() {
+      const video = this.$refs.playerInfo
+      const mycanvas = this.$refs.canvas;
+      mycanvas
+        .getContext("2d")
+        .drawImage(video, 200, 200, 762, 344, 0, 0, 381, 172);
     }
   },
   mounted() {
     this.$refs.playerInfo.src = this.device[0].url;
     setInterval(() => {
+      this.creatImg();
       this.tableData.unshift({
         date: "2019-05-02",
         name: "嘿嘿",
@@ -148,11 +157,15 @@ export default {
 .list {
   height: 518px;
   border: 1px solid #ccc;
-  background-color: rgb(75, 67, 67);
+  background: -webkit-linear-gradient(top, rgb(61, 43, 102), rgb(62, 62, 231));
+  background: -o-linear-gradient(top, rgb(61, 43, 102), rgb(62, 62, 231));
+  background: -moz-linear-gradient(top, rgb(61, 43, 102), rgb(62, 62, 231));
+  background: -mos-linear-gradient(top, rgb(61, 43, 102), rgb(62, 62, 231));
+  background: linear-gradient(top, rgb(61, 43, 102), rgb(62, 62, 231));
   ul {
-      height:100%;
+    height: 100%;
     padding: 0;
-    margin:0;
+    margin: 0;
     overflow-y: auto;
     li {
       list-style: none;
@@ -162,7 +175,7 @@ export default {
       cursor: pointer;
     }
     .actived {
-      background-color: red;
+      background-color: rgb(84, 106, 204);
     }
   }
 }
