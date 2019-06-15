@@ -1,5 +1,5 @@
 <template>
-  <el-row :gutter="2">
+  <el-row>
     <el-col :span="18">
       <video
         ref="playerInfo"
@@ -39,7 +39,7 @@
     </el-col>
     <el-col :span="6">
       <div>
-        <img src="../../assets/images/bg.jpg" height="170" alt>
+        <img src="../../assets/images/bg.jpg" height="172" alt>
       </div>
     </el-col>
   </el-row>
@@ -150,7 +150,9 @@ export default {
   border: 1px solid #ccc;
   background-color: rgb(75, 67, 67);
   ul {
+      height:100%;
     padding: 0;
+    margin:0;
     overflow-y: auto;
     li {
       list-style: none;
