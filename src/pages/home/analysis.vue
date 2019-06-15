@@ -47,6 +47,7 @@ export default {
   data() {
     return {
       index: 0,
+      timer:'',
       tableData: [
         {
           date: "2016-05-02",
@@ -153,9 +154,12 @@ export default {
     setTimeout(() => {
       this.getData();
     }, 100);
-    setInterval(() => {
+    this.timer=setInterval(() => {
       this.getData();
     }, 1000);
+  },
+  destroyed(){
+      clearInterval(this.timer)
   }
 };
 </script>

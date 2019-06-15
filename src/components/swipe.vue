@@ -97,7 +97,10 @@ export default {
   mounted() {
     this.timer = setInterval(this.move, 10);
   },
-  components: {}
+  components: {},
+  destroyed(){
+      clearInterval(this.timer)
+  }
 };
 </script>
 <style lang="scss" scoped>
