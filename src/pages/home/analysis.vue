@@ -5,13 +5,13 @@
         ref="playerInfo"
         preload="auto"
         width="100%"
-        height="520"
+        :height="height"
         style="object-fit:fill;"
         @click="changeStatus"
       ></video>
     </el-col>
     <el-col :span="6">
-      <div class="list">
+      <div class="list" :style="{height:height+'px'}">
         <ul>
           <li
             v-for="(cell,i) in device"
@@ -48,6 +48,7 @@ export default {
     return {
       index: 0,
       timer: "",
+      height:"",
       tableData: [
         {
           date: "2016-05-02",
@@ -151,6 +152,10 @@ export default {
   },
   mounted() {
     this.$refs.playerInfo.src = this.device[0].url;
+    this.height=document.documentElement.clientHeight-200
+    window.onresize = () => {
+      this.height=document.documentElement.clientHeight-200
+    };
     setTimeout(() => {
       this.getData();
     }, 100);
@@ -165,7 +170,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .list {
-  height: 518px;
   border: 1px solid #ccc;
   background: -webkit-linear-gradient(
     180deg,
