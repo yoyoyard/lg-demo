@@ -30,7 +30,7 @@
         style="width: 100%;"
         :row-style="{'background-color':'#f3f3f3'}"
       >
-        <el-table-column prop="date" label="日期" width="180"></el-table-column>
+        <el-table-column prop="date" label="日期时间" width="180"></el-table-column>
         <el-table-column prop="name" label="姓名" width="180"></el-table-column>
         <el-table-column prop="address" label="地址"></el-table-column>
         <el-table-column prop="start" label="开始时间" width="180"></el-table-column>
@@ -47,7 +47,7 @@ export default {
   data() {
     return {
       index: 0,
-      timer:'',
+      timer: "",
       tableData: [
         {
           date: "2016-05-02",
@@ -140,7 +140,7 @@ export default {
     getData() {
       this.creatImg();
       this.tableData.unshift({
-        date: "2019-05-02",
+        date: this.$root.$options.filters.timeHandle(Date.now()),
         name: "嘿嘿",
         address: "武汉市洪山区",
         start: "10:00:00",
@@ -154,12 +154,12 @@ export default {
     setTimeout(() => {
       this.getData();
     }, 100);
-    this.timer=setInterval(() => {
+    this.timer = setInterval(() => {
       this.getData();
     }, 1000);
   },
-  destroyed(){
-      clearInterval(this.timer)
+  destroyed() {
+    clearInterval(this.timer);
   }
 };
 </script>
@@ -167,7 +167,11 @@ export default {
 .list {
   height: 518px;
   border: 1px solid #ccc;
-  background: -webkit-linear-gradient(180deg, rgb(61, 43, 102), rgb(62, 62, 231));
+  background: -webkit-linear-gradient(
+    180deg,
+    rgb(61, 43, 102),
+    rgb(62, 62, 231)
+  );
   background: -o-linear-gradient(180deg, rgb(61, 43, 102), rgb(62, 62, 231));
   background: -moz-linear-gradient(180deg, rgb(61, 43, 102), rgb(62, 62, 231));
   background: -mos-linear-gradient(180deg, rgb(61, 43, 102), rgb(62, 62, 231));
