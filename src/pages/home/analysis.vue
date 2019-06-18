@@ -128,7 +128,7 @@ export default {
         this.index = index;
         setTimeout(() => {
           this.getData();
-        }, 100);
+        }, 1000);
       }
     },
     creatImg() {
@@ -142,7 +142,7 @@ export default {
       this.creatImg();
       this.tableData.unshift({
         date: this.$root.$options.filters.timeHandle(Date.now()),
-        name: "嘿嘿",
+        name: "测试数据",
         address: "武汉市洪山区",
         start: "10:00:00",
         end: "12:00:00"
@@ -156,12 +156,9 @@ export default {
     window.onresize = () => {
       this.height=document.documentElement.clientHeight-200
     };
-    setTimeout(() => {
-      this.getData();
-    }, 100);
     this.timer = setInterval(() => {
       this.getData();
-    }, 1000);
+    }, 2000);
   },
   destroyed() {
     clearInterval(this.timer);
